@@ -10,7 +10,7 @@
   remark    :
 *)
 
-Require Export Orien3D.
+Require Export OrienRepr.Orien3D.
 
 
 (* ########################################################################### *)

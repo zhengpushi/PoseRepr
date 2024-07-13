@@ -30,10 +30,10 @@
  *)
 
 
-Require Export AxisAngle.
-Require Export EulerAngle.
-Require Export Quaternion.
-Require Export RotationMatrix3D.
+Require Export OrienRepr.AxisAngle.
+Require Export OrienRepr.EulerAngle.
+Require Export OrienRepr.Quaternion.
+Require Export OrienRepr.RotationMatrix3D.
 
 Local Notation "a .x" := (a.1) (at level 25) : vec_scope.
 Local Notation "a .y" := (a.2) (at level 25) : vec_scope.
@@ -769,11 +769,11 @@ Lemma Rot_eq_Rz : forall θ, Rot (l2v [0;0;1]) θ = Rz θ.
 Proof. intros. meq; ring. Qed.
 
 (** Rot 等于 aa2matM（这是在 AxisAngle 中推导得到的结果） *)
-Lemma Rot_eq_aa2matM : forall k θ, Rot k θ = aa2matM (mkAA θ k).
+Lemma Rot_eq_aa2matM : forall k θ, Rot k θ = aa2matM (mkAA k θ).
 Proof. intros. v2e k. meq; ra. Qed.
 
 (** 当k单位向量时，Rot 等于 aa2mat (罗德里格斯公式)，计算更高效 *)
-Lemma Rot_eq_aa2mat : forall k θ, vunit k -> Rot k θ = aa2mat (mkAA θ k).
+Lemma Rot_eq_aa2mat : forall k θ, vunit k -> Rot k θ = aa2mat (mkAA k θ).
 Proof.
   intros. pose proof (v3unit_sqr_x k H).
   v2e k. cbv in H0. meq; ra. all: rewrite H0; ra.

@@ -9,7 +9,7 @@
 
  *)
 
-Require Export Orien2D.
+Require Export OrienRepr.Orien2D.
 
 
 (* ########################################################################### *)
