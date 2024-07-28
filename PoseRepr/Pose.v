@@ -690,17 +690,17 @@ Section RPY.
   Notation sγ := (sin γ). Notation cγ := (cos γ).
 
   (* 记作 Space-x-y-z（注意，需要从右到左的作用，即 Rz*Ry*Rx) *)
-  Let Sxyz : smat 3 :=
+  Let Exyz : smat 3 :=
         l2m [[cα * cβ; cα * sβ * sγ - sα * cγ; cα * sβ * cγ + sα * sγ];
              [sα * cβ; sα * sβ * sγ + cα * cγ; sα * sβ * cγ - cα * sγ];
              [- sβ; cβ * sγ; cβ * cγ]]%R.
 
-  (* RPY，等于 S123，即绕 xA,yA,zA 轴旋转 γ,β,α角，等于从右到左的乘积 Rz*Ry*Rx *)
-  Goal Sxyz = S123 γ β α.
+  (* RPY，等于 E123，即绕 xA,yA,zA 轴旋转 γ,β,α角，等于从右到左的乘积 Rz*Ry*Rx *)
+  Goal Exyz = E123 γ β α.
   Proof. meq; ring. Qed.
 
   (* RPY，等于B321，即绕 zB,yB,xB 轴旋转 α,β,γ角，等于从左到右的乘积 Rz*Ry*Rx *)
-  Goal Sxyz = B321 α β γ.
+  Goal Exyz = B321 α β γ.
   Proof. meq; ring. Qed.
 End RPY.
 
